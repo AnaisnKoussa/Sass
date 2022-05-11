@@ -1,0 +1,109 @@
+
+@import "./variables";
+@import "./mixins";
+
+body {
+    font: 100% "Space Mono", monospace;
+    color: $darkgrey;
+    margin: 0;
+    padding: 0;
+    background-color: $blanc;
+    overflow-x: hidden;
+}
+
+main {
+    padding: 0 $padding;
+}
+
+article {
+    display: flex;
+    flex-wrap: wrap;
+    section {
+        flex-grow: 1;
+        flex-basis: 45%;
+        border: 1px $lightgrey solid;
+        -webkit-box-shadow: 10px 10px 15px -4px $darkgrey;
+        -moz-box-shadow: 10px 10px 15px -4px $darkgrey;
+        box-shadow: 10px 10px 15px -4px $darkgrey;
+        padding: $padding;
+        margin: 16px;
+        clear: both;
+        overflow: auto;
+        box-sizing: border-box;
+    &#selling-points {
+        flex-grow: 2;
+        flex-basis: 100%;
+    }  
+    }
+    .advantages {
+        @for $i from 1 through 6 {
+            .adv-item-#{$i} {
+                opacity: $i * 0.1;
+                background: hsl(331, 100%, 50%);
+                color: hsl(240, 100%, 0%);
+            }
+        }  
+    }
+    code {
+        background: $black;
+        border: 1px solid $lightgrey;
+        color: $lightgrey;
+        page-break-inside: avoid;
+        font-family: monospace;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 1.6em;
+        max-width: 100%;
+        overflow: auto;
+        padding: $padding 1.5em;
+        display: block;
+        word-wrap: break-word;
+        &.before {
+            float: left;
+            width: 40%;
+        }
+        &.after {
+            float: right;
+            width: 40%;
+        }
+    }
+}
+
+h1, h2, h3 {
+    color: $pink;
+}
+
+h1 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.5em;
+    padding: $padding * 2;
+    margin-bottom: 0px;
+}
+
+.messages {
+    padding: $padding;
+    
+    .success {
+        @include message_style ($blanc);
+        background-color: $green;
+        }   
+
+    .error {
+        @include message_style ($blanc);
+        background-color: $red;
+        &:hover {
+            background-color: $green;
+        }
+    }
+
+    .warning {
+        @include message_style ($blanc);
+        background-color: $orange;
+    }
+}
+
+
